@@ -10,10 +10,11 @@ app.use(express.json());
 
 // MySQL Connection
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Vish@8319",
-    database: "student_management"
+    host: process.env.MYSQLHOST || "localhost",
+    user: process.env.MYSQLUSER || "root",
+    password: process.env.MYSQLPASSWORD || "xxxx",
+    database: process.env.MYSQLDATABASE || "student_management",
+    port: process.env.MYSQLPORT || 3306
 });
 
 
@@ -262,7 +263,7 @@ app.put("/api/reset-password", (req, res) => {
     });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 
