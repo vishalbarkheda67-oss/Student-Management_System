@@ -1,0 +1,922 @@
+/* =========================================
+   STUDENT MANAGEMENT SYSTEM - APP CSS
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+}
+
+/* =========================================
+   LOGIN PAGE
+========================================= */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #172554, #2563eb);
+  padding: 20px;
+}
+
+.login-box {
+  width: 400px;
+  max-width: 100%;
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.login-box h1 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 30px;
+  color: #111827;
+}
+
+.login-box > p {
+  margin: 0 0 28px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.login-box form {
+  width: 100%;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+  color: #111827;
+}
+
+.login-box input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.login-box form button,
+.login-box > button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 9px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.login-box form button:hover,
+.login-box > button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  width: 100%;
+  min-height: 70px;
+  background: #111827;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6%;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links button {
+  border: none;
+  background: #ef4444;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-links button:hover {
+  background: #dc2626;
+}
+
+/* =========================================
+   DASHBOARD SECTION
+========================================= */
+
+.section {
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 38px 0 30px;
+  text-align: left;
+}
+
+.section > h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 32px;
+  color: #111827;
+}
+
+.section > p {
+  margin: 10px 0 30px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* =========================================
+   STATISTICS CARDS
+========================================= */
+
+.feature-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 0 0 30px;
+}
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+    transition: 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+}
+
+.feature-card h3 {
+    margin: 0 0 10px;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.feature-card h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 28px;
+    font-weight: 700;
+}
+/* Different card colors */
+
+.feature-card:nth-child(1) h2 {
+  color: #2563eb;
+}
+
+.feature-card:nth-child(2) h2 {
+  color: #7c3aed;
+}
+
+.feature-card:nth-child(3) h2 {
+  color: #059669;
+}
+
+.feature-card:nth-child(4) h2 {
+  color: #ea580c;
+}
+
+/* =========================================
+   STUDENT MANAGEMENT HEADER
+========================================= */
+
+.student-management {
+  background: white;
+  padding: 22px 25px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.student-management h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 21px;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+.dashboard-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.dashboard-actions button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.dashboard-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.dashboard-actions .primary-btn {
+  background: #2563eb;
+}
+
+.dashboard-actions .primary-btn:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================
+   ADD STUDENT FORM
+========================================= */
+
+#studentForm {
+  background: white;
+  padding: 25px;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+#studentForm h2 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  color: #111827;
+}
+
+#studentForm form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+}
+
+#studentForm input,
+#studentForm select {
+    color: #111827;
+    background: #ffffff;
+}
+#studentForm input::placeholder {
+    color: #64748b;
+    opacity: 1;
+}
+
+#studentForm input:focus,
+#studentForm select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.form-buttons button {
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-buttons .primary-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.form-buttons .primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.cancel-btn {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.cancel-btn:hover {
+  background: #d1d5db;
+}
+
+/* =========================================
+   SEARCH / FILTER / SORT
+========================================= */
+
+.management-controls {
+  background: white;
+  padding: 20px 25px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 12px;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+}
+
+.management-controls input,
+.management-controls select {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background: white;
+  font-size: 14px;
+  color: #374151;
+}
+
+.management-controls input:focus,
+.management-controls select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+.student-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+}
+
+.student-table thead {
+    background: #f1f5f9;
+}
+
+.student-table th {
+    padding: 14px 13px;
+    text-align: left;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.student-table td {
+    padding: 14px 13px;
+    color: #475569;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.student-table tbody tr {
+    transition: 0.2s ease;
+}
+
+.student-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.student-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   TABLE ACTION BUTTONS
+========================================= */
+
+.action-btn {
+    border: none;
+    border-radius: 7px;
+    padding: 7px 12px;
+    margin-right: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.view-btn {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.view-btn:hover {
+    background: #bae6fd;
+}
+
+.edit-btn {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.edit-btn:hover {
+    background: #fde68a;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+.action-btn:last-child {
+    margin-right: 0;
+}
+
+/* =========================================
+   NO STUDENTS
+========================================= */
+
+.no-students {
+  text-align: center !important;
+  padding: 35px !important;
+  color: #6b7280 !important;
+}
+
+/* =========================================
+   PROFILE MODAL
+========================================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(15, 23, 42, 0.7);
+
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-box {
+  width: 430px;
+  max-width: 100%;
+  background: white;
+  padding: 28px;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box h2 {
+  margin: 0 0 22px;
+  color: #111827;
+}
+
+.profile-row {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.profile-row strong {
+  color: #111827;
+}
+
+.close-modal {
+  width: 100%;
+  margin-top: 20px;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.close-modal:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================
+   INLINE EDIT MODAL
+========================================= */
+
+div[style*="rgba(0,0,0,0.7)"] {
+  backdrop-filter: blur(3px);
+}
+
+div[style*="rgba(0,0,0,0.7)"] input {
+  padding: 12px;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+div[style*="rgba(0,0,0,0.7)"] input:focus {
+  border-color: #2563eb !important;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  width: 100%;
+  background: #111827;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .feature-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .student-management {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 750px) {
+  .section {
+    width: 94%;
+    padding-top: 25px;
+  }
+
+  .management-controls {
+    grid-template-columns: 1fr;
+  }
+
+  #studentForm form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-buttons {
+    grid-column: auto;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 550px) {
+  .feature-container {
+    grid-template-columns: 1fr;
+  }
+
+  .section > h1 {
+    font-size: 26px;
+  }
+
+  .student-management {
+    padding: 18px;
+  }
+
+  .dashboard-actions {
+    width: 100%;
+  }
+
+  .dashboard-actions button {
+    flex: 1;
+  }
+
+  .login-box {
+    padding: 25px;
+  }
+
+  .login-box h1 {
+    font-size: 26px;
+  }
+}
+
+/* =========================================
+   PRINT
+========================================= */
+
+@media print {
+  .navbar,
+  .dashboard-actions,
+  .management-controls,
+  .action-btn,
+  footer {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  .section {
+    width: 100%;
+    max-width: none;
+  }
+
+  .student-management,
+  .table-wrapper,
+  .feature-card {
+    box-shadow: none;
+  }
+}
+
+/* ===== ADD STUDENT MODAL FIX ===== */
+
+.modal-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-box input,
+.modal-box select {
+    width: 100%;
+    box-sizing: border-box;
+    height: 42px;
+    padding: 10px 12px;
+
+    color: #111827;
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    font-size: 14px;
+    display: block;
+}
+
+.modal-box input::placeholder {
+    color: #64748b;
+    opacity: 1;
+}
+
+.modal-box input:focus,
+.modal-box select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.modal-box .form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.modal-box .form-buttons button {
+    width: auto;
+}
+
+/* Login input text fix */
+.login-box input {
+    color: #111827 !important;
+    background: #ffffff !important;
+}
+
+.login-box input::placeholder {
+    color: #64748b !important;
+    opacity: 1;
+}
+
+/* FINAL LOGIN INPUT TEXT FIX */
+
+.login-page .login-box form input {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    background: #ffffff !important;
+}
+
+.login-page .login-box form input::placeholder {
+    color: #64748b !important;
+    -webkit-text-fill-color: #64748b !important;
+    opacity: 1 !important;
+}
+
+/* =========================================
+   SEARCH / FILTER / SORT CONTROLS
+========================================= */
+
+.management-controls {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 10px;
+    padding: 16px 20px;
+    background: #ffffff;
+}
+
+.management-controls input,
+.management-controls select {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+
+    padding: 8px 12px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #334155;
+
+    font-size: 13px;
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.management-controls input::placeholder {
+    color: #64748b;
+}
+
+.management-controls input:focus,
+.management-controls select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+/* =========================================
+   STUDENT PROFILE MODAL
+========================================= */
+
+.profile-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.65);
+    z-index: 10000;
+    padding: 20px;
+}
+
+.profile-modal-box {
+    width: 420px;
+    max-width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.profile-modal-box h2 {
+    margin: 0 0 20px;
+    color: #111827;
+    font-size: 22px;
+}
+
+.profile-modal-box p {
+    margin: 10px 0;
+    color: #475569;
+    font-size: 14px;
+}
+
+.profile-modal-box strong {
+    color: #111827;
+}
+
+.profile-modal-box button {
+    margin-top: 18px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.profile-modal-box button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   RESPONSIVE DASHBOARD
+========================================= */
+
+@media (max-width: 900px) {
+
+    .management-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        padding: 18px;
+    }
+
+    .dashboard-actions {
+        justify-content: flex-start;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .student-table {
+        min-width: 900px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .feature-card h2 {
+        font-size: 24px;
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dashboard-actions button {
+        width: 100%;
+    }
+
+    .management-controls {
+        padding: 12px;
+    }
+
+    .modal-box,
+    .profile-modal-box {
+        width: 100%;
+        padding: 20px;
+    }
+}

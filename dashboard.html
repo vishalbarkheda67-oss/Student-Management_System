@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dashboard-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .management-controls {
+            max-width: 600px;
+            margin: 35px auto;
+        }
+
+        .management-controls input,
+        .management-controls select {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            box-sizing: border-box;
+            background: white;
+        }
+
+        #studentForm {
+            display: none;
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        #studentForm input,
+        #studentForm select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .student-table th {
+            background: #111827;
+            color: white;
+            padding: 13px;
+        }
+
+        .student-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .action-btn {
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
+        }
+
+        .view-btn {
+            background: #16a34a;
+        }
+
+        .edit-btn {
+            background: #2563eb;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-row {
+            margin-bottom: 15px;
+        }
+
+        .close-modal {
+            width: 100%;
+            background: #111827;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Student Management System</div>
+
+        <div class="nav-links">
+            <button onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+
+    <!-- DASHBOARD -->
+    <section class="section">
+
+        <h1>Admin Dashboard</h1>
+
+        <p>Welcome to the Student Management System</p>
+
+
+        <!-- STATISTICS -->
+        <div class="feature-container">
+
+            <div class="feature-card">
+                <h3>👨‍🎓 Total Students</h3>
+                <h2 id="totalStudents">0</h2>
+            </div>
+
+            <div class="feature-card">
+                <h3>📚 Total Courses</h3>
+                <h2 id="totalCourses">0</h2>
+            </div>
+
+            <div class="feature-card">
+                <h3>📊 Average Marks</h3>
+                <h2 id="averageMarks">0%</h2>
+            </div>
+
+            <div class="feature-card">
+                <h3>📅 Attendance</h3>
+                <h2 id="averageAttendance">0%</h2>
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT MANAGEMENT -->
+        <div style="margin-top:60px;">
+
+            <h2>Student Management</h2>
+
+            <div class="dashboard-actions">
+
+                <button
+                    class="primary-btn"
+                    onclick="showAddStudent()"
+                >
+                    ➕ Add Student
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="exportCSV()"
+                    style="background:#16a34a;"
+                >
+                    📄 Export CSV
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="printStudents()"
+                    style="background:#7c3aed;"
+                >
+                    🖨️ Print Students
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADD / UPDATE FORM -->
+        <div id="studentForm">
+
+            <h2
+                id="formTitle"
+                style="text-align:center;"
+            >
+                Add New Student
+            </h2>
+
+
+            <form onsubmit="addStudent(event)">
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Student Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="studentEmail"
+                    placeholder="Student Email"
+                    required
+                >
+
+                <select
+                    id="studentCourse"
+                    required
+                >
+                    <option value="">Select Course</option>
+                    <option value="Computer Science">
+                        Computer Science
+                    </option>
+                    <option value="Information Technology">
+                        Information Technology
+                    </option>
+                    <option value="Artificial Intelligence">
+                        Artificial Intelligence
+                    </option>
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+                    <option value="Mechanical">
+                        Mechanical
+                    </option>
+                    <option value="Civil">
+                        Civil
+                    </option>
+                </select>
+
+                <input
+                    type="number"
+                    id="studentMarks"
+                    placeholder="Marks"
+                    min="0"
+                    max="100"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="studentAttendance"
+                    placeholder="Attendance %"
+                    min="0"
+                    max="100"
+                    required
+                >
+
+
+                <div style="margin-top:15px;">
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                        id="submitBtn"
+                    >
+                        Add Student
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        onclick="hideAddStudent()"
+                        style="margin-left:10px;background:#6b7280;"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- SEARCH / FILTER / SORT -->
+        <div class="management-controls">
+
+            <input
+                type="text"
+                id="searchStudent"
+                placeholder="🔍 Search student..."
+                oninput="searchStudent()"
+            >
+
+
+            <select
+                id="courseFilter"
+                onchange="filterByCourse()"
+            >
+                <option value="">
+                    📚 All Courses
+                </option>
+
+                <option value="Computer Science">
+                    Computer Science
+                </option>
+
+                <option value="Information Technology">
+                    Information Technology
+                </option>
+
+                <option value="Artificial Intelligence">
+                    Artificial Intelligence
+                </option>
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Mechanical">
+                    Mechanical
+                </option>
+
+                <option value="Civil">
+                    Civil
+                </option>
+
+            </select>
+
+
+            <select
+                id="sortStudents"
+                onchange="sortStudents()"
+            >
+                <option value="">
+                    ↕️ Sort Students
+                </option>
+
+                <option value="marksHigh">
+                    Marks: High to Low
+                </option>
+
+                <option value="marksLow">
+                    Marks: Low to High
+                </option>
+
+                <option value="attendanceHigh">
+                    Attendance: High to Low
+                </option>
+
+                <option value="attendanceLow">
+                    Attendance: Low to High
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- STUDENT TABLE -->
+        <div class="table-wrapper">
+
+            <table class="student-table">
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th>Marks</th>
+                        <th>Attendance</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="studentTableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROFILE MODAL -->
+    <div
+        id="profileModal"
+        class="modal"
+    >
+
+        <div class="modal-box">
+
+            <h2 style="text-align:center;">
+                👤 Student Profile
+            </h2>
+
+
+            <div class="profile-row">
+                <strong>🆔 Student ID:</strong>
+                <span id="profileId"></span>
+            </div>
+
+            <div class="profile-row">
+                <strong>👤 Name:</strong>
+                <span id="profileName"></span>
+            </div>
+
+            <div class="profile-row">
+                <strong>📧 Email:</strong>
+                <span id="profileEmail"></span>
+            </div>
+
+            <div class="profile-row">
+                <strong>🎓 Course:</strong>
+                <span id="profileCourse"></span>
+            </div>
+
+            <div class="profile-row">
+                <strong>📊 Marks:</strong>
+                <span id="profileMarks"></span>
+            </div>
+
+            <div class="profile-row">
+                <strong>📅 Attendance:</strong>
+                <span id="profileAttendance"></span>
+            </div>
+
+
+            <button
+                class="close-modal"
+                onclick="closeProfile()"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Student Management System</p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

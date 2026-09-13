@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">Student Management System</div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <button onclick="openLogin()">Admin Login</button>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Student Management System</h1>
+
+        <p>
+          Manage student records, marks, attendance and academic information
+          easily in one place.
+        </p>
+
+        <button class="primary-btn" onclick="openLogin()">Get Started</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About The System</h2>
+
+      <p>
+        The Student Management System is designed to help educational
+        institutions manage student information efficiently. Administrators can
+        add, update, delete and search student records from a single dashboard.
+      </p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+      <h2>System Features</h2>
+
+      <div class="feature-container">
+        <div class="feature-card">
+          <h3>👨‍🎓 Student Management</h3>
+          <p>Add, update, delete and view student records.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📊 Marks Management</h3>
+          <p>Store and manage student marks and grades.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📅 Attendance</h3>
+          <p>Maintain student attendance records.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔍 Search</h3>
+          <p>Quickly search students using their details.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="login-box">
+        <span class="close" onclick="closeLogin()"> &times; </span>
+
+        <h2>Admin Login</h2>
+
+        <form onsubmit="login(event)">
+          <label>Email</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="username"
+            oninput="autoFillPassword()"
+            placeholder="Enter admin email"
+            required
+          />
+
+          <label>Password</label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="current-password"
+            placeholder="Enter password"
+            required
+          />
+
+          <a
+            href="#"
+            onclick="forgotPassword()"
+            style="
+              display: block;
+              text-align: right;
+              margin-top: 8px;
+              color: #2563eb;
+              text-decoration: none;
+              font-size: 14px;
+            "
+          >
+            Forgot Password?
+          </a>
+
+          <button type="submit" class="primary-btn">Login</button>
+        </form>
+
+        <p class="login-info">Demo Login: admin@gmail.com / admin123</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Student Management System</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      function autoFillPassword() {
+        const email = document.getElementById("email").value;
+
+        const password = document.getElementById("password");
+
+        if (email === "admin@gmail.com") {
+          password.value = "admin123";
+        } else {
+          password.value = "";
+        }
+      }
+    </script>
+<!-- Forgot Password Modal -->
+<div id="forgotPasswordModal" class="modal">
+
+    <div class="login-box">
+
+        <span class="close" onclick="closeForgotPassword()">
+            &times;
+        </span>
+
+        <h2>Forgot Password</h2>
+
+        <!-- Step 1: Email -->
+        <div id="forgotStep1">
+
+            <p>Enter your registered email</p>
+
+            <input
+                type="email"
+                id="forgotEmail"
+                placeholder="Enter your email"
+            >
+
+            <button
+                type="button"
+                class="primary-btn"
+                onclick="sendOTP()"
+            >
+                Send OTP
+            </button>
+
+        </div>
+
+        <!-- Step 2: OTP -->
+        <div id="forgotStep2" style="display:none;">
+
+            <p>Enter the OTP</p>
+
+            <input
+                type="text"
+                id="otpInput"
+                placeholder="Enter 6-digit OTP"
+                maxlength="6"
+            >
+
+            <button
+                type="button"
+                class="primary-btn"
+                onclick="verifyOTP()"
+            >
+                Verify OTP
+            </button>
+
+        </div>
+
+        <!-- Step 3: New Password -->
+        <div id="forgotStep3" style="display:none;">
+
+            <p>Enter New Password</p>
+
+            <input
+                type="password"
+                id="newPassword"
+                placeholder="New password"
+            >
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm password"
+            >
+
+            <button
+                type="button"
+                class="primary-btn"
+                onclick="resetPassword()"
+            >
+                Reset Password
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+  </body>
+</html>
