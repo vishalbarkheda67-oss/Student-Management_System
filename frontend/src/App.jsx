@@ -25,8 +25,9 @@ function App() {
   // GET STUDENTS FROM MYSQL
   const fetchStudents = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/students");
-
+      const response = await fetch(
+        "https://student-management-system-8q94.onrender.com/api/students",
+      );
       const data = await response.json();
 
       setStudents(data);
@@ -44,16 +45,19 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://student-management-system-8q94.onrender.com/api/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: loginEmail,
+            password: loginPassword,
+          }),
         },
-        body: JSON.stringify({
-          email: loginEmail,
-          password: loginPassword,
-        }),
-      });
+      );
 
       const data = await response.json();
 
@@ -85,21 +89,24 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/students", {
-        method: "POST",
+      const response = await fetch(
+        "https://student-management-system-8q94.onrender.com/api/students",
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            course: formData.course,
+            marks: Number(formData.marks),
+            attendance: Number(formData.attendance),
+          }),
         },
-
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          course: formData.course,
-          marks: Number(formData.marks),
-          attendance: Number(formData.attendance),
-        }),
-      });
+      );
 
       const data = await response.json();
 
@@ -164,7 +171,8 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/students/" + editStudent.id,
+        "https://student-management-system-8q94.onrender.com/api/students/" +
+          editStudent.id,
         {
           method: "PUT",
           headers: {
@@ -209,9 +217,13 @@ function App() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/students/" + id, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        "https://student-management-system-8q94.onrender.com/api/students/" +
+          id,
+        {
+          method: "DELETE",
+        },
+      );
 
       const data = await response.json();
 
@@ -402,16 +414,19 @@ function App() {
                 return;
               }
 
-              fetch("http://localhost:5000/api/reset-password", {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
+              fetch(
+                "https://student-management-system-8q94.onrender.com/api/reset-password",
+                {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    email: email,
+                    newPassword: newPassword,
+                  }),
                 },
-                body: JSON.stringify({
-                  email: email,
-                  newPassword: newPassword,
-                }),
-              })
+              )
                 .then((response) => response.json())
                 .then((data) => {
                   if (data.error) {
